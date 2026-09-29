@@ -113,6 +113,13 @@ func (t *Table) keyboard(evt *tcell.EventKey) *tcell.EventKey {
 			t.Table.SelectNextColumn()
 			return nil
 		}
+		// Shift+Up/Down page like PageUp/PageDown (vi-style).
+		if key == tcell.KeyUp {
+			return tcell.NewEventKey(tcell.KeyPgUp, 0, tcell.ModNone)
+		}
+		if key == tcell.KeyDown {
+			return tcell.NewEventKey(tcell.KeyPgDn, 0, tcell.ModNone)
+		}
 	}
 
 	if key == tcell.KeyUp || key == tcell.KeyDown {
